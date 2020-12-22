@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spark-deployment
+  labels:
+    app: spark
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: spark
+  template:
+    metadata:
+      labels:
+        app: spark
+    spec:
+      containers:
+      - name: spark
+        image: p7hb/docker-spark
+	  stdin_open: true
+          tty: true
+          entrypoint: bash
+        ports:
+        - containerPort: 8085
+        volumeMounts:
+        - mountPath: /cache
+          name: cache-volume
+      volumes:
+      - name: cache-volume
+        emptyDir: {}

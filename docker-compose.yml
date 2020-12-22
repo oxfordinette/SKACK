@@ -1,0 +1,21 @@
+version: '3'
+services:
+   web:
+    build: .
+    ports:
+      - "8085:8085"
+    image: "docker/docker-spark"
+    stdin_open: true
+    tty: true
+    entrypoint: bash
+    volumes:
+      - .:/code
+      - logvolume01:/var/log
+volumes:
+  logvolume01: {}
+networks:
+  default:
+    external:
+      name: net
+
+

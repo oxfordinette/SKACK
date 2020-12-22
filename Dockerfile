@@ -52,4 +52,4 @@ WORKDIR /root
 # Spark worker web UI on 8081.
 EXPOSE 4040 8080 8081
 
-CMD ["/bin/bash"]
+CMD ["sh", "-c", "tail -f /dev/null"]
