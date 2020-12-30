@@ -1,21 +1,37 @@
 # S.K.A.C.K stack (Spark-Kubernetes-Akka-Cassandra-Kafka)
-Data Analytics Stack on Kubernetes
+
+SKACK Stack est constitué d'open source pour l'analyse en temps réel du Big Data. Il se compose d'Apache Spark, Kubernetes, Akka, Apache Cassandra et Apache Kafka
+
+## Tools
+
+- Spark - Un moteur général pour le traitement de données à grande échelle, permettant des analyses depuis les requêtes SQL jusqu'à l'apprentissage automatique, l'analyse de graphes et le traitement de flux
+- Kubernetes - Noyau de systèmes distribués qui fournit des ressources et une isolation entre tous les autres composants de la pile SKACK. Kubernetes est la base sur laquelle fonctionnent les autres composants de la pile SKACK.
+- Akka - Une boîte à outils et un runtime pour créer facilement des applications simultanées et distribuées qui répondent aux messages.
+- Cassandra - Système de gestion de base de données distribué capable de gérer de grandes quantités de données sur des serveurs avec une haute disponibilité.
+- Kafka - Une plate-forme à haut débit et à faible latence pour gérer les flux de données en temps réel sans perte de données
 
 ## Prerequisites
+ 
+[Install Docker](https://www.docker.com/) 
 
-Installation de: 
-- [Docker](https://www.docker.com/) and
-- [Docker Compose](https://docs.docker.com/compose/) (if it is not part of the Docker installation on your platform).
+[Install Docker Compose](https://docs.docker.com/compose/)
 
-### For Kubernetes:
-- Installation de minikube
-- Lancement de minikube (minikube start)
-- Visualisation des noeuds (minikube dashboard)
+[Install Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/) 
 
-- [Apache Cassandra](http://cassandra.apache.org/)
-- [Apache Kafka](http://kafka.apache.org/)
-- [Apache Spark](http://spark.apache.org/)
-- [Kubernetes](https://kubernetes.io/)
+Start Minikube with:
+```
+minikube start
+```
+
+Verify that everything is OK with:
+```
+minikube status
+```
+
+Visualisation:
+```
+minikube dashboard
+```
 
 ## Docker containers
 
