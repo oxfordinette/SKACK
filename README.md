@@ -2,7 +2,7 @@
 
 SKACK Stack est constitué d'open source pour l'analyse en temps réel du Big Data. Il se compose d'Apache Spark, Kubernetes, Akka, Apache Cassandra et Apache Kafka
 
-## Tools
+## Open-sources
 
 - Spark - Un moteur général pour le traitement de données à grande échelle, permettant des analyses depuis les requêtes SQL jusqu'à l'apprentissage automatique, l'analyse de graphes et le traitement de flux
 - Kubernetes - Noyau de systèmes distribués qui fournit des ressources et une isolation entre tous les autres composants de la pile SKACK. Kubernetes est la base sur laquelle fonctionnent les autres composants de la pile SKACK.
