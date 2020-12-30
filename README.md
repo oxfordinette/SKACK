@@ -10,7 +10,7 @@ SKACK Stack est constitué d'open source pour l'analyse en temps réel du Big Da
 - Cassandra - Système de gestion de base de données distribué capable de gérer de grandes quantités de données sur des serveurs avec une haute disponibilité.
 - Kafka - Une plate-forme à haut débit et à faible latence pour gérer les flux de données en temps réel sans perte de données
 
-![alt text](https://github.com/oxfordinette/SKACK/blob/main/Bigdata.png)
+![alt text](https://github.com/oxfordinette/SKACK/blob/main/bigdata1.PNG)
 
 ## Prerequisites
  
