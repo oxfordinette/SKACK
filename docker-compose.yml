@@ -1,54 +1,6 @@
 version: "3"
 
 services:
-  namenode:
-    image: bde2020/hadoop-namenode:2.0.0-hadoop2.7.4-java8
-    container_name: namenode
-    #volumes:
-    #  - hadoop_namenode:/hadoop/dfs/name
-    environment:
-      - CLUSTER_NAME=test
-    env_file:
-      - ./hadoop.env
-    ports:
-      - 8020:8020
-      - 50070:50070
-
-  datanode:
-    image: bde2020/hadoop-datanode:2.0.0-hadoop2.7.4-java8
-    container_name: datanode
-    #volumes:
-    #  - hadoop_datanode:/hadoop/dfs/data
-    environment:
-      SERVICE_PRECONDITION: "namenode:50070"
-    env_file:
-      - ./hadoop.env
-    ports:
-      - 50075:50075
-
-  resourcemanager:
-    image: bde2020/hadoop-resourcemanager:2.0.0-hadoop2.7.4-java8
-    container_name: resourcemanager
-    environment:
-      SERVICE_PRECONDITION: "namenode:50070 datanode:50075"
-    env_file:
-      - ./hadoop.env
-    ports:
-      - 8088:8088
-      - 8032:8032
-
-  nodemanager1:
-    image: bde2020/hadoop-nodemanager:2.0.0-hadoop2.7.4-java8
-    container_name: nodemanager
-    environment:
-      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 resourcemanager:8088"
-    env_file:
-      - ./hadoop.env
-    depends_on:
-      - namenode
-      - resourcemanager
-    ports:
-      - 8042:8042
   zoo:
     image: zookeeper:3.4.10
     container_name: zookeeper
@@ -68,9 +20,9 @@ services:
       - INIT_DAEMON_STEP=setup_spark
     volumes:
       - $PWD/../shared:/data
-  spark-worker-1:
+  spark-worker:
     image: bde2020/spark-worker:2.4.1-hadoop2.7
-    container_name: spark-worker-1
+    container_name: spark-worker
     depends_on:
       - spark-master
     ports:
@@ -111,16 +63,33 @@ services:
     container_name: cassandra
     ports:
       - "7000:7000"
+  akka-seed:
+    container_name: akka-sample-cluster-docker-compose-scala_seed_1
+    image: lightbend/akka-sample-cluster-docker-compose-scala:latest
+    ports:
+      - '1600:1600'
+    environment:
+      CLUSTER_PORT: 1600
+      CLUSTER_IP: akka-seed
+      SEED_PORT_1600_TCP_ADDR: akka-seed
+  akka:
+    image: lightbend/akka-sample-cluster-docker-compose-scala:latest
+    ports:
+      - '1601:1601'
+    environment:
+      CLUSTER_PORT: 1601
+      CLUSTER_IP: akka
+      SEED_PORT_1600_TCP_ADDR: akka-seed
 
   postgres:
     image: postgres:latest
-    container_name: shopping_cart_postgres
+    container_name: postgres
     environment:
       - "TZ=Europe/Amsterdam"
-      - "POSTGRES_USER=shopping_cart"
-      - "POSTGRES_PASSWORD=shopping_cart"
+      - "POSTGRES_USER=sandra"
+      - "POSTGRES_PASSWORD=sandra"
     ports:
-      - "5433:5433"  # credentials (shopping_cart:shopping_cart)
+      - "5433:5433" 
 
   jupyter:
     image: mycollab/jupyter-bigdata:latest
