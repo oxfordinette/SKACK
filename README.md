@@ -86,7 +86,7 @@ Visualisation grâce à minikube dashboard
 
 ## Run an application 
 
-Jupyter (UI): localhost:9999
+Jupyter (UI): localhost:8888
 
 Dataset to test SKACK stack:
 
