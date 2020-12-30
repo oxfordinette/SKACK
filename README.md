@@ -32,6 +32,7 @@ Visualisation:
 ```
 minikube dashboard
 ```
+## Deployment
 
 ### Deploy with docker-compose
 
@@ -53,7 +54,7 @@ Exposer un service Kubernetes à l'extérieur
 Visualisation grâce à minikube dashboard
 
 
-### List of containers
+## List of containers
 
 #### Apache Cassandra cluster
 
@@ -66,6 +67,7 @@ Visualisation grâce à minikube dashboard
 #### Apache Kafka cluster
 
 - `kafka`
+- `kafka-manager`
 - `zookeeper`
 
 #### PostgreSQL
@@ -81,45 +83,16 @@ Visualisation grâce à minikube dashboard
 
 - `akka`
 
-#### Probe
 
-- `probe`
+## Run an application 
 
-Used for running applications from the command line from within the docker network.
+Jupyter (UI): localhost:9999
 
+Dataset to test SKACK stack:
 
-## Access Spark workers
-
-There are links on the Spark Cluster UI that lead you to spark workers.
-
-To access these from the host you will need to install [sshuttle](https://github.com/sshuttle/sshuttle) and run the `scripts/ssh/sshuttle-via-probe` script. The password is `root`.
-
-
-## Run an application/main written in Scala
-
-### Prerequisites
-
-- Install [sbt](http://www.scala-sbt.org/) (Scala Built Tool).
-
-### Using the probe
-
-- Start the probe container
-- SSH to it using the `scripts/ssh/ssh-probe` script. The password is `root`.
-- Use command line tools and access other containers using their hostname
-
-### Run them on Probe container
-
-- Build a fat jar `big-data-playground.jar` with `sbt assembly`. This is placed under `/target/big-data-playground/`. (Directory `/target/big-data-playground/ is mount at `/playground/` on the `probe` container.)
-- SSH to the probe container (see above)
-- Run a main with `java -cp /playground/big-data-playground.jar com.codiply.bdpg.SomeClassWithMain`
-
-## Inspect a Kafka topic
-
-SSH to the probe container and then inspect a topic with `kafkacat`
-
-    kafkacat -C -b kafka-1 -t topic-name -f 'Topic %t[%p], offset: %o, key: %k, payload: %S bytes: %s\n'
-
-replacing `topic-name` with the actual topic name. 
+```
+/jupyter/
+```
 
 ## Tools 
 
