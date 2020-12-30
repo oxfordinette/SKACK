@@ -33,26 +33,24 @@ Visualisation:
 minikube dashboard
 ```
 
-## Docker containers
-
-### Build the docker images
-
-You can build all docker images in advance by running
-
-    scripts/docker-compose/build-all
-
 ### Deploy with docker-compose
 
-The following containers are defined in groups in `docker/compose/docker-compose.{group}.yml`.
+Permet de lancer la stack. Les images se trouvent sur le docker hub (lien en fin de ReadMe)
 
-To start a group of containers run the corresponding script
-
-    scripts/docker-compose/{group}-up
+    docker-compose up
     
 
 ### Deploy with kubernetes
 
+Permet de lancer la stack sur Kubernetes. Lancement du script:
 
+    /docker/deployment.sh
+    
+Exposer un service Kubernetes à l'extérieur
+
+    /docker/expose.sh
+
+Visualisation grâce à minikube dashboard
 
 
 ### List of containers
@@ -125,8 +123,7 @@ replacing `topic-name` with the actual topic name.
 
 ## Tools 
 
--DockerHub
-https://hub.docker.com/repository/docker/sandrabaraket1/docker
+[DockerHub](https://hub.docker.com/repository/docker/sandrabaraket1/)
 
 
 ## Collaborators
