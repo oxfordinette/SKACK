@@ -1,4 +1,4 @@
-# SKACK
+# S.K.A.C.K stack (Spark-Kubernetes-Akka-Cassandra-Kafka)
 Data Analytics Stack on Kubernetes
 
 ## Prerequisites
