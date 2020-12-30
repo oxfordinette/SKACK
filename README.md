@@ -107,5 +107,14 @@ SSH to the probe container and then inspect a topic with `kafkacat`
 
 replacing `topic-name` with the actual topic name. 
 
-Auteur: sandra.baraket@edu.ece.fr; myriam.abdi@edu.ece.fr
+## Tools 
+
+-DockerHub
+https://hub.docker.com/repository/docker/sandrabaraket1/docker
+
+
+## Collaborators
+
+ABDI Myriam (myriam.abdi@ece.edu.fr)
+BARAKET Sandra (sandrabaraket@edu.ece.fr)
 
