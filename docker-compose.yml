@@ -11,7 +11,7 @@ services:
     ports:
       - 2181:2181
   spark-master:
-    image: bde2020/spark-master:2.4.1-hadoop2.7
+    image: sandrabaraket1/spark-master
     container_name: spark-master
     ports:
       - "8082:8080"
@@ -21,7 +21,7 @@ services:
     volumes:
       - $PWD/../shared:/data
   spark-worker:
-    image: bde2020/spark-worker:2.4.1-hadoop2.7
+    image: sandrabaraket1/spark-worker
     container_name: spark-worker
     depends_on:
       - spark-master
@@ -30,7 +30,7 @@ services:
     environment:
       - "SPARK_MASTER=spark://spark-master:7077"
   kafka:
-    image: wurstmeister/kafka:2.12-2.2.1
+    image: sandrabaraket1/kafka
     container_name: kafka
     depends_on:
       - zoo
@@ -47,7 +47,7 @@ services:
     #  - $PWD/../shared/kafka:/kafka
 
   kafka_manager:
-    image: hlebalbau/kafka-manager:2.0.0.2
+    image: sandrabaraket1/kafka-manager
     container_name: kafka_manager
     ports:
       - "9000:9000"
@@ -64,16 +64,15 @@ services:
     ports:
       - "7000:7000"
   akka-seed:
-    container_name: akka-sample-cluster-docker-compose-scala_seed_1
-    image: lightbend/akka-sample-cluster-docker-compose-scala:latest
-    ports:
+    container_name: akka-seed
+    image: sandrabaraket1/akka
       - '1600:1600'
     environment:
       CLUSTER_PORT: 1600
       CLUSTER_IP: akka-seed
       SEED_PORT_1600_TCP_ADDR: akka-seed
   akka:
-    image: lightbend/akka-sample-cluster-docker-compose-scala:latest
+    image: sandrabaraket1/akka
     ports:
       - '1601:1601'
     environment:
